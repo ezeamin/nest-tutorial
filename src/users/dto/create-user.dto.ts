@@ -11,7 +11,12 @@ export class CreateUserDTO {
   @Transform(({ value }: TransformFnParams) => value?.trim())
   name: string;
 
-  @IsEmail()
+  @IsEmail(
+    {},
+    {
+      message: 'Email must be a valid email',
+    },
+  )
   email: string;
 
   @IsEnum(['ADMIN', 'ENGINEER', 'INTERN'], {
